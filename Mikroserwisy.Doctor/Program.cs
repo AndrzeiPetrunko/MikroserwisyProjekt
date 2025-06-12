@@ -1,4 +1,4 @@
-using Mikroserwisy.Doctor.Extensions;
+using Mikroserwisy.DoctorApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

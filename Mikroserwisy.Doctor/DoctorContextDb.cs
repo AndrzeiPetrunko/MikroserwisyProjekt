@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Mikroserwisy.Doctor
+namespace Mikroserwisy.DoctorApi
 {
     public class DoctorContextDb : DbContext
     {

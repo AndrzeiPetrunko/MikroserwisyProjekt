@@ -1,6 +1,7 @@
-﻿using Mikroserwisy.Doctor.Services;
+﻿using Mikroserwisy.DoctorApi;
+using Mikroserwisy.DoctorApi.Services;
 
-namespace Mikroserwisy.Doctor.Extensions
+namespace Mikroserwisy.DoctorApi.Extensions
 {
     public static class DoctorServiceExtensions
     {

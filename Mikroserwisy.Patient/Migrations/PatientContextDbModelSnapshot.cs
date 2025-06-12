@@ -3,8 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mikroserwisy.Patient;
-
+using Mikroserwisy.PatientApi;
 
 #nullable disable
 
@@ -22,7 +21,7 @@ namespace Project.Patient.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Project.Patient.Entities.Patient", b =>
+            modelBuilder.Entity("Mikroserwisy.Patient.Entities.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

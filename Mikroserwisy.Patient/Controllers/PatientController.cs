@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Mikroserwisy.Patient.Dtos;
-using Mikroserwisy.Patient.Services;
+using Mikroserwisy.PatientApi.Dtos;
+using Mikroserwisy.PatientApi.Services;
 
-namespace Mikroserwisy.Patient.Controllers
+namespace Mikroserwisy.PatientApi.Controllers
 {
     public class PatientController : ControllerBase
     {

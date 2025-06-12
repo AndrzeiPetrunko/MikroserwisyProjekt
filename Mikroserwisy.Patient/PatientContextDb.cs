@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
-namespace Mikroserwisy.Patient
+namespace Mikroserwisy.PatientApi
 {
     public class PatientContextDb : DbContext
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Mikroserwisy.Patient.Entities
+namespace Mikroserwisy.PatientApi.Entities
 {
     [Table("Patients", Schema = "ProjectSzT3")]
     public class Patient
@@ -12,8 +12,9 @@ namespace Mikroserwisy.Patient.Entities
         [MaxLength(100)]
         public string FullName { get; set; } = string.Empty;
         [Required]
-        public string PESEL { get; set; }
+        public string? PESEL { get; set; }
         [Required]
-        public string EmailAddress { get; set; }
+        [EmailAddress]
+        public string? EmailAddress { get; set; }
     }
 }

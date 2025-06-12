@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
-namespace Mikroserwisy.Patient.Dtos
+namespace Mikroserwisy.PatientApi.Dtos
 {
     public class PatientDto
     {

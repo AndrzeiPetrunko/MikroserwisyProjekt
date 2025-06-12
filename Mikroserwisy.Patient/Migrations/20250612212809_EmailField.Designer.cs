@@ -6,14 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mikroserwisy.PatientApi;
 
-
 #nullable disable
 
 namespace Project.Patient.Migrations
 {
     [DbContext(typeof(PatientContextDb))]
-    [Migration("20250612163143_PeselIntToString")]
-    partial class PeselIntToString
+    [Migration("20250612212809_EmailField")]
+    partial class EmailField
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +24,7 @@ namespace Project.Patient.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Project.Patient.Entities.Patient", b =>
+            modelBuilder.Entity("Mikroserwisy.Patient.Entities.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

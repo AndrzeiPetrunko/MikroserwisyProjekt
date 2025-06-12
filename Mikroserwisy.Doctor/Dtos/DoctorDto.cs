@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Mikroserwisy.Doctor.Dtos
+namespace Mikroserwisy.DoctorApi.Dtos
 {
     public class DoctorDto
     {

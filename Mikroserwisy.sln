@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikroserwisy.Patient", "Mikroserwisy.Patient\Mikroserwisy.Patient.csproj", "{C9E154CD-96AE-4398-84CB-745128E6C9E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mikroserwisy.PatientApi", "Mikroserwisy.Patient\Mikroserwisy.PatientApi.csproj", "{C9E154CD-96AE-4398-84CB-745128E6C9E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikroserwisy.Doctor", "Mikroserwisy.Doctor\Mikroserwisy.Doctor.csproj", "{14F7A02F-BF0F-4F6D-B1C5-3B483CFDDFC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mikroserwisy.DoctorApi", "Mikroserwisy.Doctor\Mikroserwisy.DoctorApi.csproj", "{14F7A02F-BF0F-4F6D-B1C5-3B483CFDDFC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

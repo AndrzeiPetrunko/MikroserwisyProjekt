@@ -1,7 +1,6 @@
-﻿using Mikroserwisy.Patient;
-using Mikroserwisy.Patient.Services;
+﻿using Mikroserwisy.PatientApi.Services;
 
-namespace Mikroserwisy.Patient.Extensions
+namespace Mikroserwisy.PatientApi.Extensions
 {
     public static class PatientCollectionExtensions
     {
