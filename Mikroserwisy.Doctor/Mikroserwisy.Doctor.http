@@ -1,0 +1,6 @@
+@Mikroserwisy.Doctor_HostAddress = http://localhost:5056
+
+GET {{Mikroserwisy.Doctor_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
