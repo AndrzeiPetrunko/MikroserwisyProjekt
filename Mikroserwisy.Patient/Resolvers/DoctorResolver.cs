@@ -30,7 +30,7 @@ namespace Mikroserwisy.PatientApi.Resolvers
     public class DoctorDto
     {
         public int Id { get; set; }
-        public string? DoctorSpecialization { get; set; }
+        public string DoctorSpecialization { get; set; }
     }
 }
 

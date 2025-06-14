@@ -20,6 +20,7 @@ namespace Mikroserwisy.PatientApi.Services
                 throw new ArgumentException("ID must be greater than zero.", nameof(id));
 
             return await _context.Patients
+                .Include(s => s.Appointments)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(s => s.Id == id);
         }
@@ -35,7 +36,7 @@ namespace Mikroserwisy.PatientApi.Services
         {
             ValidatePatientEntity(entity);
             var resolver = new DoctorResolver();
-            foreach (var doctor in entity.Appointment)
+            foreach (var doctor in entity.Appointments)
             {
                 doctor.DoctorSpecialization = await resolver.ResolverFor(doctor.DoctorExternalId);
             }

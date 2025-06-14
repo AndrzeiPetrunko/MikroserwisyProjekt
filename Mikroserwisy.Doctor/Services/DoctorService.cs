@@ -66,7 +66,7 @@ namespace Mikroserwisy.DoctorApi.Services
                 .Where(d => d.Id == id)
                 .ExecuteUpdateAsync(setters => setters
                     .SetProperty(d => d.FullName, dto.FullName)
-                    .SetProperty(d => d.Specialization, dto.Specialization)
+                    .SetProperty(d => d.DoctorSpecialization, dto.DoctorSpecialization)
                 );
 
             if (affectedRows == 0)
@@ -80,7 +80,7 @@ namespace Mikroserwisy.DoctorApi.Services
             if (string.IsNullOrWhiteSpace(dto.FullName))
                 throw new ArgumentException("Full name is required.");
 
-            if (string.IsNullOrWhiteSpace(dto.Specialization))
+            if (string.IsNullOrWhiteSpace(dto.DoctorSpecialization))
                 throw new ArgumentException("Specialization is required.");
         }
 
@@ -89,7 +89,7 @@ namespace Mikroserwisy.DoctorApi.Services
             if (string.IsNullOrWhiteSpace(entity.FullName))
                 throw new ArgumentException("Full name is required.");
 
-            if (string.IsNullOrWhiteSpace(entity.Specialization))
+            if (string.IsNullOrWhiteSpace(entity.DoctorSpecialization))
                 throw new ArgumentException("Specialization is required.");
         }
     }

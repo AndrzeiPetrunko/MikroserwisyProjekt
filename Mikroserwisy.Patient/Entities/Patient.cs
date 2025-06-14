@@ -16,6 +16,6 @@ namespace Mikroserwisy.PatientApi.Entities
         [Required]
         [EmailAddress]
         public string? EmailAddress { get; set; }
-        public ICollection<PatientAppointment> Appointment { get; set; } = new List<PatientAppointment>();
+        public ICollection<PatientAppointment> Appointments { get; set; } = new List<PatientAppointment>();
     }
 }

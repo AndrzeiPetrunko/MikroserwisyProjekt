@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mikroserwisy.PatientApi;
 
@@ -11,9 +12,11 @@ using Mikroserwisy.PatientApi;
 namespace Project.Patient.Migrations
 {
     [DbContext(typeof(PatientContextDb))]
-    partial class PatientContextDbModelSnapshot : ModelSnapshot
+    [Migration("20250614164750_NamesChange")]
+    partial class NamesChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

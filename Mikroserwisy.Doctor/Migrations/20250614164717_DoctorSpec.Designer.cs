@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mikroserwisy.DoctorApi;
 
@@ -10,9 +11,11 @@ using Mikroserwisy.DoctorApi;
 namespace Project.Doctor.Migrations
 {
     [DbContext(typeof(DoctorContextDb))]
-    partial class DoctorContextDbModelSnapshot : ModelSnapshot
+    [Migration("20250614164717_DoctorSpec")]
+    partial class DoctorSpec
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
