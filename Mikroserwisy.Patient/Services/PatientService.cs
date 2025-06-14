@@ -14,15 +14,28 @@ namespace Mikroserwisy.PatientApi.Services
             _context = context;
         }
 
-        public async Task<Entities.Patient?> GetById(int id)
+        public async Task<PatientDto?> GetById(int id)
         {
-            if (id <= 0)
-                throw new ArgumentException("ID must be greater than zero.", nameof(id));
+            var patient = await _context.Patients
+                .Include(p => p.Appointments)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
-            return await _context.Patients
-                .Include(s => s.Appointments)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(s => s.Id == id);
+            if (patient == null) return null;
+
+            return new PatientDto
+            {
+                FullName = patient.FullName,
+                PESEL = patient.PESEL,
+                EmailAddress = patient.EmailAddress,
+                Appointments = patient.Appointments.Select(a => new AppointmentDto
+                {
+                    Id = a.Id,
+                    PatientId = a.PatientId,
+                    DoctorExternalId = a.DoctorExternalId,
+                    DateTime = a.DateTime,
+                    DoctorSpecialization = a.DoctorSpecialization
+                }).ToList()
+            };
         }
 
         public async Task<IEnumerable<Entities.Patient?>> Get()
@@ -35,13 +48,23 @@ namespace Mikroserwisy.PatientApi.Services
         public async Task Add(Entities.Patient entity)
         {
             ValidatePatientEntity(entity);
+
             var resolver = new DoctorResolver();
+
             foreach (var doctor in entity.Appointments)
             {
-                doctor.DoctorSpecialization = await resolver.ResolverFor(doctor.DoctorExternalId);
+                try
+                {
+                    doctor.DoctorSpecialization = await resolver.ResolverFor(doctor.DoctorExternalId);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    throw new ArgumentException(ex.Message);
+                }
+
+                _context.Patients.Add(entity);
+                await _context.SaveChangesAsync();
             }
-            _context.Patients.Add(entity);
-            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteById(int id)

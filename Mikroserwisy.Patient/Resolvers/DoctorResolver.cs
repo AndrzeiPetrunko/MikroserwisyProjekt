@@ -5,32 +5,46 @@ namespace Mikroserwisy.PatientApi.Resolvers
 {
     public class DoctorResolver
     {
-        public async Task<string> ResolverFor(int doctorId)
-        {
-            return await ResolveFromExternalDictionary(doctorId);
-        }
-        private async Task<string> ResolveFromExternalDictionary(int doctorId)
-        {
-            string apiUrl = "http://localhost:5056/";
-            using (var client = new HttpClient())
+            public async Task<string> ResolverFor(int doctorId)
             {
+                var doctor = await GetDoctorById(doctorId);
+                if (!doctor.IsAvailable)
+                {
+                    throw new InvalidOperationException($"Doctor with ID {doctorId} is not available.");
+                }
+
+                return doctor.DoctorSpecialization;
+            }
+
+            private async Task<DoctorDto> GetDoctorById(int doctorId)
+            {
+                string apiUrl = "http://localhost:5056/";
+
+                using var client = new HttpClient();
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("aplication/json"));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // <- poprawka "aplication"
 
-                HttpResponseMessage response = await client.GetAsync("doctors");
+                var response = await client.GetAsync("doctors");
+                var responseData = await response.Content.ReadAsStringAsync();
 
-                string responseData = await response.Content.ReadAsStringAsync();
-                List<DoctorDto>? doctors = JsonConvert.DeserializeObject<List<DoctorDto>>(responseData);
-                return doctors.FirstOrDefault(x => x.Id == doctorId).DoctorSpecialization;
+                var doctors = JsonConvert.DeserializeObject<List<DoctorDto>>(responseData);
+                var doctor = doctors.FirstOrDefault(d => d.Id == doctorId);
+
+                if (doctor == null)
+                    throw new InvalidOperationException($"Doctor with ID {doctorId} not found.");
+
+                return doctor;
             }
         }
+
 
     }
     public class DoctorDto
     {
         public int Id { get; set; }
         public string DoctorSpecialization { get; set; }
+        public bool IsAvailable { get; set; }
     }
-}
+
 

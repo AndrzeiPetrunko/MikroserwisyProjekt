@@ -6,5 +6,6 @@ namespace Mikroserwisy.DoctorApi.Dtos
     {
         public string? FullName { get; set; } = string.Empty;
         public string? DoctorSpecialization { get; set; } = string.Empty;
+        public bool IsAvailable { get; set; }
     }
 }
