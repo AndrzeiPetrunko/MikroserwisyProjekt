@@ -12,5 +12,6 @@ namespace Mikroserwisy.DoctorApi.Entities
         public string? FullName { get; set; }
         [Required]
         public string? Specialization { get; set; }
+        public bool IsAvailable { get; set; } = true;
     }
 }

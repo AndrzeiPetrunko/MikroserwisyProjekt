@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Mikroserwisy.PatientApi;
 using Mikroserwisy.PatientApi.Dtos;
+using Mikroserwisy.PatientApi.Resolvers;
 namespace Mikroserwisy.PatientApi.Services
 {
     public class PatientService
@@ -33,7 +34,11 @@ namespace Mikroserwisy.PatientApi.Services
         public async Task Add(Entities.Patient entity)
         {
             ValidatePatientEntity(entity);
-
+            var resolver = new DoctorResolver();
+            foreach (var doctor in entity.Appointment)
+            {
+                doctor.DoctorSpecialization = await resolver.ResolverFor(doctor.DoctorExternalId);
+            }
             _context.Patients.Add(entity);
             await _context.SaveChangesAsync();
         }

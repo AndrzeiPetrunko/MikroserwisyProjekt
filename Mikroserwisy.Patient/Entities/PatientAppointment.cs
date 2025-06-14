@@ -13,11 +13,10 @@ namespace Mikroserwisy.PatientApi.Entities
 
         [ForeignKey(nameof(Patient))]
         public int PatientId { get; set; }
-
-        [ForeignKey(nameof(Doctor))]
-        public int DoctorId { get; set;}
+        public int DoctorExternalId { get; set;}
         [Required]
         public DateTime? DateTime { get; set; }
+        public string? DoctorSpecialization { get; set; }
 
     }
 }
