@@ -23,7 +23,7 @@ namespace Mikroserwisy.PatientApi.Resolvers
                 using var client = new HttpClient();
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); // <- poprawka "aplication"
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var response = await client.GetAsync("doctors");
                 var responseData = await response.Content.ReadAsStringAsync();
